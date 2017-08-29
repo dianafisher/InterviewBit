@@ -11,7 +11,7 @@ function convertToTitle(A) {
   var result = [];
 
   while (A > 0) {
-    console.log('A:', A);
+    // console.log('A:', A);
     A--;  // to get to zero indexing
     var val = A % 26;
     // console.log('val', val);
