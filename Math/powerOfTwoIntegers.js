@@ -7,6 +7,7 @@ can be expressed as A^P where P > 1 and A > 0. A and P both should be integers.
 
 function powerOfTwoIntegers(A) {
   // n^P  where P > 1 and n > 0
+  if (A == 1) return 1;
 
   var s = Math.sqrt(A);
   // console.log(s);
