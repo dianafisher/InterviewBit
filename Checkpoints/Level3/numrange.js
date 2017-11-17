@@ -55,37 +55,6 @@ module.exports = {
     }
 
     return count;
-  },
-
-  solution : function(A, B, C){
-    var count = 0;
-
-    var i = 0;
-    var j = 0;
-    var S = 0;
-    while (i < A.length) {
-      S += A[j];
-
-      if (S >= B && S <= C) {
-        count += 1;
-        j += 1;
-      } else if (S < B) {
-        // move to next index
-        j += 1;
-      } else if (S > C) {
-        i += 1;
-        j = i;
-        S = 0;
-      }
-
-      if (j == A.length) {
-        S = 0;
-        i += 1;
-        j = i;
-      }
-    }
-
-    return count;
   }
 };
 
