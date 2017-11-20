@@ -22,23 +22,23 @@ module.exports = {
     return result;
   },
 
+  /*
+    Generate all permuations that begin with A[0], then all that begin with A[1], etc.
+  */
   permutations: function(A, idx, result) {
 
     if (idx >= A.length) {
-      return A;
+      // create a copy of the array before pushing to result array.
+      var temp = A.slice();
+      result.push(temp);
+      return;
     }
 
     for (var i = idx; i < A.length; i++) {
       if (!this.hasDuplicate(A, idx, i)) {
         this.swap(A, i, idx);
-        var a = this.permutations(A, idx + 1, result);
-        if (a) {
-
-          // create a copy of the array before pushing to result array.
-          var temp = a.slice();
-          result.push(temp);
-          // console.log('result after..', result);
-        }
+        this.permutations(A, idx + 1, result);
+        // restore original order
         this.swap(A, i, idx);
       }
 
