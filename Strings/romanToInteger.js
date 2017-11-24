@@ -25,72 +25,46 @@ module.exports = {
   //param A : string
   //return an integer
   romanToInt : function(A){
-    var result = 0;
 
+    var values = {
+      'I' : 1,
+      'V': 5,
+      'X': 10,
+      'L': 50,
+      'C': 100,
+      'D': 500,
+      'M': 1000
+    };
+
+    var result = 0;
     var i = 0;
     while (i < A.length) {
       var ch = A.charAt(i);
-
-
-      if (ch == 'I') {
-        // check for subtractive notation
+      var val = values[ch];
+      // console.log('val', val);
+      if (ch == 'I' || ch == 'X' || ch == 'C') {
         if (i < A.length) {
           var next = A.charAt(i+1);
-          if (next == 'V') {
-            result += 4;
+          if (ch == 'I' && next == 'V' ||
+              ch == 'X' && next == 'L' ||
+              ch == 'C' && next == 'D' ) {
+            result += (val * 4);
             i++;
-          } else if (next == 'X') {
-            result += 9;
-            i++;
-          }
-          else {
-            result += 1;
-          }
-        } else {
-          result += 1;
-        }
-      } else if (ch == 'V') {
-        result += 5;
-      } else if (ch == 'X') {
-        if (i < A.length) {
-          var next = A.charAt(i+1);
-          if (next == 'L') {
-            result += 40;
-            i++;
-          } else if (next == 'C') {
-            result += 90;
+          } else if (ch == 'I' && next == 'X' ||
+                     ch == 'X' && next == 'C' ||
+                     ch == 'C' && next == 'M' ) {
+            result += (val * 9);
             i++;
           } else {
-            result += 10;
+            result += val;
           }
         } else {
-          result += 10;
+          result += val;
         }
-
-      } else if (ch == 'L') {
-        result += 50
-      } else if (ch == 'C') {
-        if (i < A.length) {
-          var next = A.charAt(i+1);
-          if (next == 'D') {
-            result += 400;
-            i++;
-          } else if (next == 'M') {
-            result += 900;
-            i++;
-          } else {
-            result += 100;
-          }
-        } else {
-          result += 100;
-        }
-      } else if (ch == 'D') {
-        result += 500
-      } else if (ch == 'M') {
-          result += 1000;
+      } else {
+        result += val;
       }
       i++;
-
     }
 
     return result;
