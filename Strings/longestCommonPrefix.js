@@ -75,5 +75,5 @@ module.exports = {
 
 console.log(module.exports.longestCommonPrefix(["abcdefgh", "aefghijk", "abcefgh"]));  // expect a
 console.log(module.exports.longestCommonPrefix(["abcdefgh", "abcefgh"]));  // expect abc
-console.log(module.exports.longestCommonPrefix(["abdefgh", "abcefgh"]));  // expect fgh
-console.log(module.exports.longestCommonPrefix(["abdefghjkl", "abcefghzdne"]));  // expect fgh
+console.log(module.exports.longestCommonPrefix(["abdefgh", "abcefgh"]));  // expect efgh
+console.log(module.exports.longestCommonPrefix(["abdefghjkl", "abcefghzdne"]));  // expect efgh
